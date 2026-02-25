@@ -1,6 +1,8 @@
 #pragma once
 
 #include "byte_stream.hh"
+#include <cstdint>
+#include <map>
 
 class Reassembler
 {
@@ -41,6 +43,14 @@ public:
   // Access output stream writer, but const-only (can't write from outside)
   const Writer& writer() const { return output_.writer(); }
 
+  bool is_over( uint64_t first_index, const std::string& data );
+  std::string proper_data( uint64_t& first_index, std::string data );
+
 private:
+  std::map<uint64_t, std::string> buffer_ {};
+  std::uint64_t next_index_ {};
+  std::uint64_t data_end_index_ {};
+  std::uint64_t bytes_pending {};
+  bool is_end = false;
   ByteStream output_;
 };

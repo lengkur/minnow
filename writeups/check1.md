@@ -1,42 +1,12 @@
 Checkpoint 1 Writeup
 ====================
 
-My name: [your name here]
+- 在这个实验中我学习了protocol5的ipv4和protocol17的ip包（udp包）结构，知道了网络中是怎么处理ip包，并使用RawSocket对象完成了相关编程
 
-My SUNet ID: [your sunetid here]
+  遇到的问题：
 
-I collaborated with: [list sunetids here]
+  1.因为计算checksum是以2字节一对的，如果是奇数的话要补上0，在udp包构造过程中经常因为长度是奇数，然后有没有补0导致错误
 
-I would like to thank/reward these classmates for their help: [list sunetids here]
+  2.在计算protocol的值时，因为是以2字节一对的，如果protocol占用一个字节，要往protocol前面补0凑成2字节
 
-This lab took me about [n] hours to do. I [did/did not] attend the lab session.
-
-I was surprised by or edified to learn that: [describe]
-
-Report from the hands-on component of the lab checkpoint: [include
-information from 2.1(4), and report on your experience in 2.2]
-
-Describe Reassembler structure and design. [Describe data structures and
-approach taken. Describe alternative designs considered or tested.
-Describe benefits and weaknesses of your design compared with
-alternatives -- perhaps in terms of simplicity/complexity, risk of
-bugs, asymptotic performance, empirical performance, required
-implementation time and difficulty, and other factors. Include any
-measurements if applicable.]
-
-Implementation Challenges:
-[]
-
-Remaining Bugs:
-[]
-
-- If applicable: I received help from a former student in this class,
-  another expert, or a chatbot or other AI system (e.g. ChatGPT,
-  Gemini, Claude, etc.), with the following questions or prompts:
-  [please list questions/prompts]
-
-- Optional: I had unexpected difficulty with: [describe]
-
-- Optional: I think you could make this lab better by: [describe]
-
-- Optional: I'm not sure about: [describe]
+  
