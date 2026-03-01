@@ -43,7 +43,6 @@ public:
   // Access output stream writer, but const-only (can't write from outside)
   const Writer& writer() const { return output_.writer(); }
 
-  bool is_over( uint64_t first_index, const std::string& data );
   std::string proper_data( uint64_t& first_index, std::string data );
 
 private:

@@ -1,8 +1,10 @@
 #pragma once
 
+#include "../util/tcp_receiver_message.hh"
+#include "../util/tcp_sender_message.hh"
 #include "reassembler.hh"
-#include "tcp_receiver_message.hh"
-#include "tcp_sender_message.hh"
+#include "wrapping_integers.hh"
+#include <optional>
 
 class TCPReceiver
 {
@@ -14,7 +16,7 @@ public:
    * The TCPReceiver receives TCPSenderMessages, inserting their payload into the Reassembler
    * at the correct stream index.
    */
-  void receive( TCPSenderMessage message );
+  void receive( const TCPSenderMessage& message );
 
   // The TCPReceiver sends TCPReceiverMessages to the peer's TCPSender.
   TCPReceiverMessage send() const;
@@ -27,4 +29,5 @@ public:
 
 private:
   Reassembler reassembler_;
+  std::optional<Wrap32> isn_ {};
 };
