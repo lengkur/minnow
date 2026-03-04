@@ -1,10 +1,10 @@
 #pragma once
 
+#include "../src/tcp_receiver.hh"
+#include "../src/tcp_sender.hh"
 #include "tcp_config.hh"
-#include "tcp_receiver.hh"
 #include "tcp_receiver_message.hh"
 #include "tcp_segment.hh"
-#include "tcp_sender.hh"
 #include "tcp_sender_message.hh"
 
 #include <functional>
