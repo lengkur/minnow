@@ -1,9 +1,11 @@
 #pragma once
 
+#include "../util/tcp_receiver_message.hh"
+#include "../util/tcp_sender_message.hh"
 #include "byte_stream.hh"
-#include "tcp_receiver_message.hh"
-#include "tcp_sender_message.hh"
 
+#include <cstdint>
+#include <deque>
 #include <functional>
 
 class TCPSender
@@ -42,4 +44,15 @@ private:
   ByteStream input_;
   Wrap32 isn_;
   uint64_t initial_RTO_ms_;
+
+  bool syn_sent_ {};
+  bool fin_sent_ {};
+  bool time_running_ {};
+  uint64_t passwd_time_ {};
+  uint64_t next_seqno_ {};
+  uint64_t last_ack_ {};
+  uint16_t window_size_ { 1 };
+  uint64_t consecutive_retransmissions_ {};
+  uint64_t current_RTO_ms_ { initial_RTO_ms_ };
+  std::deque<TCPSenderMessage> outsended_ {};
 };

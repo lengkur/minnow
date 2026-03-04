@@ -1,7 +1,7 @@
 #pragma once
 
+#include "../src/wrapping_integers.hh"
 #include "address.hh"
-#include "wrapping_integers.hh"
 
 #include <cstddef>
 #include <cstdint>
